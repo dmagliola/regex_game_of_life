@@ -24,12 +24,37 @@ class Board
 
   # Given a board, print it to screen  with spaces and squares,
   # to make it look nice and understandable
-  def self.print(board)
+  def self.ascii_print(board)
     puts "\e[H\e[2J" # Clear the screen
     board.
       map(&:join).
       map{|line| line.gsub("0", " ").gsub("1", "█") }.
       each {|line| puts line }
+  end
+
+  def self.braille_print(board)
+    puts "\e[H\e[2J" # Clear the screen
+
+    board = board.map{|line| line.clone }
+
+    # Make sure the board size is a multiple of 2 in width, and of 4 in height
+    board.each{|line| line << "0" } unless board_size(board)[:w].even?
+    board << Array.new(board_size(board)[:w], "0") while board_size(board)[:h] % 4 != 0
+
+    while board.length > 0
+      # print 4 lines at a time
+      lines = board.shift(4)
+
+      while lines.first.length > 0
+        bits = lines.flat_map{|l| l.shift(2) }
+        # Rearrange to account for the fact that we go 1,2,3,7,4,5,6,8 vertically (https://en.wikipedia.org/wiki/Braille_Patterns)
+        bits = [7,6,5,3,1,4,2,0].map{|i| bits[i]}
+        unicode = "2800".to_i(16) + bits.join("").to_i(2)
+        print unicode.chr(Encoding::UTF_8)
+      end
+
+      puts ""
+    end
   end
 end
 
@@ -52,9 +77,9 @@ class GameOfLife
 
   def self.game_loop(board)
     board_size = Board.board_size(board)
-
     while true
-      Board.print(board)
+      Board.ascii_print(board)
+      # Board.braille_print(board)
 
       new_board = board.map{|line| line.clone }
 
