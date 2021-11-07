@@ -5,7 +5,7 @@ Companion code and other information for my Rubyconf 2021 talk
 (also presented previously in 
 [Rubykaigi 2021](https://rubykaigi.org/2021-takeout/presentations/dmagliola.html))
 
-[![alt text](talk_thumbnail.png)](https://www.youtube.com/watch?v=hkDZCFBlD5Q)
+[![alt text](talk_thumbnail_rubyconf.png)](https://www.youtube.com/watch?v=hkDZCFBlD5Q)
 
 Here you can find all the code examples mentioned in the talk, the slides deck, and some more explanation
 especially of the Regex Turing Machine.
