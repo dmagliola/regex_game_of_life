@@ -1,7 +1,9 @@
 # regex_game_of_life
 
-Companion code and other information for my Rubykaigi 2021 talk 
-["Do Regex dream of Turing Completeness?"](https://rubykaigi.org/2021-takeout/presentations/dmagliola.html)
+Companion code and other information for my Rubyconf 2021 talk 
+["Do Regex dream of Turing Completeness?"](https://rubyconf.org/program/sessions#session-1239)  
+(also presented previously in 
+[Rubykaigi 2021](https://rubykaigi.org/2021-takeout/presentations/dmagliola.html))
 
 [![alt text](talk_thumbnail.png)](https://www.youtube.com/watch?v=hkDZCFBlD5Q)
 
